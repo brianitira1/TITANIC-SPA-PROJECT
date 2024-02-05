@@ -13,11 +13,12 @@ const ClientAppointmentPage = () => {
     phoneNumber: "",
     email: "",
     description: "",
+    service: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // Special handling for age field to ensure it's a valid integer
+   
     const parsedValue = name === "age" ? parseInt(value, 10) || "" : value;
     setFormData((prevState) => ({
       ...prevState,
@@ -35,7 +36,7 @@ const ClientAppointmentPage = () => {
         console.error("Error submitting appointment:", error.message);
       } else {
         console.log("Appointment submitted successfully:", data);
-        // Reset form data after successful submission
+        
         setFormData({
           firstname: "",
           surname: "",
@@ -45,6 +46,7 @@ const ClientAppointmentPage = () => {
           phoneNumber: "",
           email: "",
           description: "",
+          service: "",
         });
       }
     } catch (error) {
@@ -127,13 +129,43 @@ const ClientAppointmentPage = () => {
           />
         </div>
         <div className="mb-3">
+          <label className="form-label">Gender:</label>
+          <select
+            className="form-control"
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Service:</label>
+          <select
+            className="form-control"
+            name="service"
+            value={formData.service}
+            onChange={handleChange}
+            required
+          >
+            <option  value="">Select Service</option>
+            <option value="massage">Massage</option>
+            <option value="wellness">Wellness</option>
+            <option value="beauty">Beauty</option>
+          </select>
+        </div>
+        <div className="mb-3">
           <label className="form-label">Description:</label>
           <textarea
             className="form-control"
             name="description"
             value={formData.description}
             onChange={handleChange}
-            rows="3"
+            rows="1"
             required
           ></textarea>
         </div>

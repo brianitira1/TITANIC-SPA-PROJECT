@@ -15,7 +15,7 @@ const Beauty = () => {
         <div className="overlay-form"></div>
 
         <div className="container header">
-          <h1>make an appointment for beauty</h1>
+        
         </div>
         <ClientAppointmentPage />
       </div>

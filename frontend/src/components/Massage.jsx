@@ -18,7 +18,7 @@ const Massage = () => {
         />
         <div className="overlay-form"></div>
         <div className="container header">
-          <h1>make an appointment for massage</h1>
+       
         </div>
         <ClientAppointmentPage />
       </div>

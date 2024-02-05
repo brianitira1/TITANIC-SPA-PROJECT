@@ -1,5 +1,5 @@
 #appointment-form {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -10,7 +10,10 @@
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   max-width: 70%;
+  
+ 
 }
+
 
 #appointment-form input,
 #appointment-form textarea {
@@ -44,4 +47,20 @@
 
 #appointment-form button:hover {
   background-color: #0056b3;
+}
+
+
+#appointment-form select {
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#appointment-form select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }

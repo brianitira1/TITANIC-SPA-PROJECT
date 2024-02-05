@@ -9,7 +9,9 @@ const AdminDashboardPage = () => {
       try {
         const { data, error } = await supabase
           .from("appointments")
-          .select("firstname, surname, age, description, date");
+          .select(
+            "firstname, surname, age, description, date, phoneNumber, email, id",
+          );
 
         if (error) {
           throw error;
@@ -32,7 +34,8 @@ const AdminDashboardPage = () => {
         {appointments.map((appointment) => (
           <li key={appointment.id}>
             {appointment.firstname} {appointment.surname} - {appointment.date}{" "}
-            {appointment.age} - {appointment.description}
+            {appointment.age} - {appointment.description} -{" "}
+            {appointment.phoneNumber} - {appointment.email}
           </li>
         ))}
       </ul>
