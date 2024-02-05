@@ -10,6 +10,7 @@ import Massage from "./components/Massage";
 import Beauty from "./components/Beauty";
 import Wellness from "./components/Wellness";
 import Footer from "./components/Footer";
+import Payments from "./utils/Payments";
 
 const app = () => {
   return (
@@ -23,6 +24,7 @@ const app = () => {
         <Route path="/beauty" element={<Beauty />} />
         <Route path="/wellness" element={<Wellness />} />
         <Route path="/footer" element={<Footer />} />
+        <Route path="/payments" element={<Payments />} />
       </Routes>
     </Router>
   );
