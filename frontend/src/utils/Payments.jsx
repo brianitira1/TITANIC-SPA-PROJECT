@@ -59,7 +59,7 @@ const Payments = () => {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-primary btn-block">
+              <button type="submit" className="btn btn-success btn-block mt-3">
                 Pay with M-Pesa
               </button>
             </form>
