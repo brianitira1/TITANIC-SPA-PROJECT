@@ -32,7 +32,14 @@ const Hero = () => {
 
   return (
     <div className="hero-container">
-      <img src={heroImage} alt="Hero Image" className="img-fluid hero-image" />
+      <motion.img
+        className="hero-image"
+        src={heroImage}
+        alt="Hero Image"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      />
       <div className="overlay"></div>
       <motion.div
         className="hero-content"
