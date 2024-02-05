@@ -6,12 +6,24 @@ import NavBar from "../components/NavBar";
 
 import beautybg from "../assets/images/beautybg.jpg";
 
+import axios from "axios";
+
 const Payments = () => {
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phone, setPhone] = useState("");
   const [amount, setAmount] = useState("");
 
-  const handlePaymentSubmit = (e) => {
+  const handlePaymentSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await axios.post("https://w54v58-5000.csb.app/token", {
+        phone,
+        amount,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -42,8 +54,8 @@ const Payments = () => {
                   className="form-control"
                   id="phoneNumber"
                   placeholder="Enter your phone number"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   required
                 />
               </div>
