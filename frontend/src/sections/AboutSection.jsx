@@ -41,14 +41,17 @@ const AboutSection = () => {
               initial={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.5 }}
             >
-              <h2>About Titanic SPA</h2>
-              <p>
+              <h2 className="about-title">About Titanic SPA</h2>
+              <p
+                className="
+              p-text"
+              >
                 Titanic SPA is a luxurious retreat inspired by the grandeur of
                 the legendary ship. Nestled in the heart of the city, our spa
                 offers a serene environment where you can relax and rejuvenate
                 your mind, body, and soul.
               </p>
-              <p>
+              <p className="p-text-2">
                 Our expert team of therapists and aestheticians are dedicated to
                 providing personalized treatments to meet your unique needs.
                 From soothing massages to revitalizing facials, we offer a wide
@@ -62,10 +65,7 @@ const AboutSection = () => {
               animate={controlsImage}
               initial={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.5 }}
-            >
-              {/* This div will hold the background image */}
-              {/* No need to render an image element here */}
-            </motion.div>
+            ></motion.div>
           </div>
         </div>
       </div>
