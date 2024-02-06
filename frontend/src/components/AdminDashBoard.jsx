@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import supabase from "../databases/supabase";
 
-const AdminDashboardPage = () => {
+const AdminDashBoard = () => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
@@ -43,4 +43,4 @@ const AdminDashboardPage = () => {
   );
 };
 
-export default AdminDashboardPage;
+export default AdminDashBoard;

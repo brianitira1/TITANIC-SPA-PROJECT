@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./components/Home";
 import SuccessPage from "./components/SuccessPage";
-import AdminDashboardPage from "./components/AdminDashBoardPage";
+import AdminDashboard from "./components/AdminDashBoard";
 import ServicesPage from "./components/ServicesPage";
 import Massage from "./components/Massage";
 import Beauty from "./components/Beauty";
@@ -18,7 +18,7 @@ const app = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/success" element={<SuccessPage />} />
-        <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/massage" element={<Massage />} />
         <Route path="/beauty" element={<Beauty />} />
