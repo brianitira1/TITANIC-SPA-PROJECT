@@ -12,14 +12,13 @@ const Massage = () => {
       <NavBar />
       <div className=" hero-container " id="beauty-container">
         <img
+          loading="lazy"
           src={massagebg}
           alt="Hero Image"
           className="img-fluid hero-image"
         />
         <div className="overlay-form"></div>
-        <div className="container header">
-       
-        </div>
+        <div className="container header"></div>
         <ClientAppointmentPage />
       </div>
     </>

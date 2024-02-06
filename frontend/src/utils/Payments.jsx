@@ -33,7 +33,12 @@ const Payments = () => {
         className="
       hero-container"
       >
-        <img src={beautybg} alt="Hero Image" className="img-fluid hero-image" />
+        <img
+          loading="lazy"
+          src={beautybg}
+          alt="Hero Image"
+          className="img-fluid hero-image"
+        />
         <div className="overlay-form"></div>
         <motion.div
           initial={{ opacity: 0 }}

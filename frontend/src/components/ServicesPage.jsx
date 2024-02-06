@@ -50,7 +50,6 @@ const ServicesPage = () => {
 
         <div className="container mt-5" id="services">
           <div className="row">
-            {/* Beauty Service Card */}
             <div className="col-md-4 col-lg-4 col-sx-12 col-sm-12">
               <div
                 className="card bg-transparent"
@@ -63,6 +62,7 @@ const ServicesPage = () => {
                   className="card-body"
                 >
                   <img
+                    loading="lazy"
                     src={beautyimage}
                     alt="Services"
                     className="img-fluid"
@@ -87,6 +87,7 @@ const ServicesPage = () => {
                   className="card-body"
                 >
                   <img
+                    loading="lazy"
                     src={massageimage}
                     alt="Services"
                     className="img-fluid"
@@ -110,6 +111,7 @@ const ServicesPage = () => {
                   className="card-body"
                 >
                   <img
+                    loading="lazy"
                     src={wellnessimage}
                     alt="Services"
                     className="img-fluid"
