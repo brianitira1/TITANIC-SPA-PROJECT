@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import supabase from "../databases/supabase";
 import {toast, Toaster} from 'react-hot-toast'
 
+import { useNavigate } from "react-router";
+
 import "../styles/AppointmentForm.css";
 
 const ClientAppointmentPage = () => {
+
+const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstname: "",
     surname: "",
