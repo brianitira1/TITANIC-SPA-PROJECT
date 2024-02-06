@@ -69,12 +69,12 @@ const ServicesPage = () => {
                     id="service"
                   />
                   <h5 className="card-title text-white">Beauty</h5>
-                  {/* Render the PriceBadge component with the corresponding price */}
+
                   <PriceBadge price={prices[0]} />
                 </motion.div>
               </div>
             </div>
-            {/* Massage Service Card */}
+
             <div className="col-md-4 col-lg-4 col-sx-12 col-sm-12">
               <div
                 className="card bg-transparent"
@@ -92,12 +92,12 @@ const ServicesPage = () => {
                     className="img-fluid"
                   />
                   <h5 className="card-title text-white">Massage</h5>
-                  {/* Render the PriceBadge component with the corresponding price */}
+
                   <PriceBadge price={prices[1]} />
                 </motion.div>
               </div>
             </div>
-            {/* Wellness Service Card */}
+
             <div className="col-md-4 col-lg-4 col-sx-12 col-sm-12">
               <div
                 className="card bg-transparent"
@@ -115,7 +115,7 @@ const ServicesPage = () => {
                     className="img-fluid"
                   />
                   <h5 className="card-title text-white">Wellness</h5>
-                  {/* Render the PriceBadge component with the corresponding price */}
+
                   <PriceBadge price={prices[2]} />
                 </motion.div>
               </div>
