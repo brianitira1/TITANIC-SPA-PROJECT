@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import supabase from "../databases/supabase";
+import {toast, Toaster} from 'react-hot-toast'
 
 import "../styles/AppointmentForm.css";
 
@@ -28,6 +29,13 @@ const ClientAppointmentPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const isEmptyField = Object.values(formData).some((value) => value === "");
+    if (isEmptyField) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
     try {
       const { data, error } = await supabase
         .from("appointments")
@@ -36,6 +44,8 @@ const ClientAppointmentPage = () => {
         console.error("Error submitting appointment:", error.message);
       } else {
         console.log("Appointment submitted successfully:", data);
+
+        toast.success('Form submitted successfully.');
         
         setFormData({
           firstname: "",
@@ -169,10 +179,16 @@ const ClientAppointmentPage = () => {
             required
           ></textarea>
         </div>
+
         <button type="submit" className="btn btn-primary">
           Submit
+         
         </button>
+
+    
+      
       </form>
+      <Toaster />
     </div>
   );
 };
