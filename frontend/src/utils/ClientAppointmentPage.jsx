@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import supabase from "../databases/supabase";
-import {toast, Toaster} from 'react-hot-toast'
+import { toast, Toaster } from "react-hot-toast";
 
 import { useNavigate } from "react-router";
 
 import "../styles/AppointmentForm.css";
 
 const ClientAppointmentPage = () => {
-
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     firstname: "",
@@ -24,7 +23,7 @@ const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-   
+
     const parsedValue = name === "age" ? parseInt(value, 10) || "" : value;
     setFormData((prevState) => ({
       ...prevState,
@@ -50,8 +49,12 @@ const navigate = useNavigate();
       } else {
         console.log("Appointment submitted successfully:", data);
 
-        toast.success('Form submitted successfully.');
-        
+        toast.success("Form submitted successfully.");
+
+        setTimeout(() => {
+          navigate("/payments");
+        }, 2000);
+
         setFormData({
           firstname: "",
           surname: "",
@@ -167,7 +170,7 @@ const navigate = useNavigate();
             onChange={handleChange}
             required
           >
-            <option  value="">Select Service</option>
+            <option value="">Select Service</option>
             <option value="massage">Massage</option>
             <option value="wellness">Wellness</option>
             <option value="beauty">Beauty</option>
@@ -187,11 +190,7 @@ const navigate = useNavigate();
 
         <button type="submit" className="btn btn-primary">
           Submit
-         
         </button>
-
-    
-      
       </form>
       <Toaster />
     </div>
