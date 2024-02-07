@@ -82,12 +82,50 @@ const AdminDashboard = () => {
     setShowDeleteConfirmation(false);
   };
 
+  const renderAppointmentItems = () => {
+    return appointments.map((appointment) => (
+      <li
+        key={appointment.id}
+        className="list-group-item d-flex justify-content-between align-items-center appointment-item"
+      >
+        <div>
+          <h5>
+            {appointment.firstname} {appointment.surname}
+          </h5>
+          <p>Date: {appointment.date}</p>
+          <p>Age: {appointment.age}</p>
+          <p>Service: {appointment.service}</p>
+        </div>
+        <div>
+          <GoEye
+            style={{
+              color: "rgb(60, 179, 113)",
+              cursor: "pointer",
+              fontSize: "39px",
+              marginRight: "8px",
+            }}
+            onClick={() => setSelectedAppointment(appointment)}
+          />
+          <MdDelete
+            style={{
+              color: "#ff6347",
+              cursor: "pointer",
+              fontSize: "38px",
+            }}
+            onClick={() => {
+              setSelectedAppointment(appointment);
+              setShowDeleteConfirmation(true);
+            }}
+          />
+        </div>
+      </li>
+    ));
+  };
+
   return (
     <div className="container" id="admin-dashboard">
       <NavBar />
-      {!imageLoaded && (
-        <div>Loading...</div>
-      )}
+      {!imageLoaded && <div>Loading...</div>}
       {imageLoaded && (
         <img
           loading="lazy"
@@ -97,48 +135,12 @@ const AdminDashboard = () => {
         />
       )}
       <div className="overlay-dashboard"></div>
-      <h1 className="text-center my-4">Admin Dashboard</h1>
+      <h1 className="text-center my-4 ">Admin Dashboard</h1>
       <div className="row">
         <div className="col-md-8">
           <h2>Appointments</h2>
           <ul className="list-group">
-            {appointments.map((appointment) => (
-              <li
-                key={appointment.id}
-                className="list-group-item d-flex justify-content-between align-items-center appointment-item"
-              >
-                <div>
-                  <h5>
-                    {appointment.firstname} {appointment.surname}
-                  </h5>
-                  <p>Date: {appointment.date}</p>
-                  <p>Age: {appointment.age}</p>
-                  <p>Service: {appointment.service}</p>
-                </div>
-                <div>
-                  <GoEye
-                    style={{
-                      color: "rgb(60, 179, 113)",
-                      cursor: "pointer",
-                      fontSize: "39px",
-                      marginRight: "8px",
-                    }}
-                    onClick={() => setSelectedAppointment(appointment)}
-                  />
-                  <MdDelete
-                    style={{
-                      color: "#ff6347",
-                      cursor: "pointer",
-                      fontSize: "38px",
-                    }}
-                    onClick={() => {
-                      setSelectedAppointment(appointment);
-                      setShowDeleteConfirmation(true);
-                    }}
-                  />
-                </div>
-              </li>
-            ))}
+            {renderAppointmentItems()}
           </ul>
         </div>
         <div className="col-md-4">
