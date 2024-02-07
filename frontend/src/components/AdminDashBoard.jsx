@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { FaTrash, FaEye, FaTimes } from "react-icons/fa";
+import { GoEye } from "react-icons/go";
+import { GrClose } from "react-icons/gr";
+import { MdDelete } from "react-icons/md";
 import supabase from "../databases/supabase";
 
 import "../styles/AdminDashboard.css";
@@ -51,7 +53,7 @@ const AdminDashboard = () => {
       );
 
       setSelectedAppointment(null);
-      setShowDeleteConfirmation(false); // Reset delete confirmation
+      setShowDeleteConfirmation(false);
     } catch (error) {
       console.error("Error deleting appointment:", error.message);
     }
@@ -83,20 +85,20 @@ const AdminDashboard = () => {
                   <p>Service: {appointment.service}</p>
                 </div>
                 <div>
-                  <FaEye
+                  <GoEye
                     style={{
                       color: "blue",
                       cursor: "pointer",
-                      fontSize: "24px",
+                      fontSize: "39px",
                       marginRight: "8px",
                     }}
                     onClick={() => setSelectedAppointment(appointment)}
                   />
-                  <FaTrash
+                  <MdDelete
                     style={{
                       color: "red",
                       cursor: "pointer",
-                      fontSize: "24px",
+                      fontSize: "38px",
                     }}
                     onClick={() => {
                       setSelectedAppointment(appointment);
@@ -123,7 +125,7 @@ const AdminDashboard = () => {
                 <p>Email: {selectedAppointment.email}</p>
                 <p>Gender: {selectedAppointment.gender}</p>
                 <p>Service: {selectedAppointment.service}</p>
-                <FaTimes
+                <GrClose
                   style={{
                     color: "red",
                     cursor: "pointer",
