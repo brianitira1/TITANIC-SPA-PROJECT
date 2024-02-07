@@ -13,6 +13,7 @@ const AdminDashboard = () => {
   const [appointments, setAppointments] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -34,6 +35,20 @@ const AdminDashboard = () => {
     };
 
     fetchAppointments();
+  }, []);
+
+  useEffect(() => {
+    const handleImageLoad = () => {
+      setImageLoaded(true);
+    };
+
+    const image = new Image();
+    image.src = dashboardimage;
+    image.addEventListener("load", handleImageLoad);
+
+    return () => {
+      image.removeEventListener("load", handleImageLoad);
+    };
   }, []);
 
   const handleDeleteAppointment = async () => {
@@ -70,12 +85,17 @@ const AdminDashboard = () => {
   return (
     <div className="container" id="admin-dashboard">
       <NavBar />
-      <img
-        loading="lazy"
-        src={dashboardimage}
-        alt="Hero Image"
-        className="img-fluid hero-image"
-      />
+      {!imageLoaded && (
+        <div>Loading...</div>
+      )}
+      {imageLoaded && (
+        <img
+          loading="lazy"
+          src={dashboardimage}
+          alt="Hero Image"
+          className="img-fluid hero-image"
+        />
+      )}
       <div className="overlay-dashboard"></div>
       <h1 className="text-center my-4">Admin Dashboard</h1>
       <div className="row">
@@ -146,7 +166,7 @@ const AdminDashboard = () => {
                   onClick={handleCloseModal}
                 />
                 {showDeleteConfirmation && (
-                  <FaTrash
+                  <MdDelete
                     style={{
                       color: "red",
                       cursor: "pointer",
