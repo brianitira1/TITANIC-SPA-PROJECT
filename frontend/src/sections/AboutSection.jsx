@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import AboutImage from "../assets/images/beautyimage.jpg";
+import AboutImage from "../assets/images/aboutimage.jpg";
 
 import "../styles/About.css";
 
@@ -34,7 +34,7 @@ const AboutSection = () => {
         <div className="container">
           <div className="row align-items-center h-100">
             <motion.div
-              className="col-md-6"
+              className="col-md-6 about-container"
               id="about-text"
               ref={ref}
               animate={controlsText}

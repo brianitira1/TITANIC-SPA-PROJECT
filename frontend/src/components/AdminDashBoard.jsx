@@ -4,7 +4,10 @@ import { GrClose } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
 import supabase from "../databases/supabase";
 
+import NavBar from "../components/NavBar";
+
 import "../styles/AdminDashboard.css";
+import dashboardimage from "../assets/images/dashboardimage.jpg";
 
 const AdminDashboard = () => {
   const [appointments, setAppointments] = useState([]);
@@ -65,7 +68,15 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container" id="admin-dashboard">
+      <NavBar />
+      <img
+        loading="lazy"
+        src={dashboardimage}
+        alt="Hero Image"
+        className="img-fluid hero-image"
+      />
+      <div className="overlay-dashboard"></div>
       <h1 className="text-center my-4">Admin Dashboard</h1>
       <div className="row">
         <div className="col-md-8">

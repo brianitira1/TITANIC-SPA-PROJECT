@@ -20,10 +20,14 @@ const NavBar = ({ scrollToFooter }) => {
   const handleFooterNavigation = () => {
     scrollToFooter();
   };
+
+  const user = clerk.user;
+  const titanicLink = user ? "/" : "#";
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top container">
       <div className="container">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href={titanicLink}>
           Titanic SPA
         </a>
         <button
