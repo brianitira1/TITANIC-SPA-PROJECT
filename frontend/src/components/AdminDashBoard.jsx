@@ -87,7 +87,7 @@ const AdminDashboard = () => {
                 <div>
                   <GoEye
                     style={{
-                      color: "blue",
+                      color: "rgb(60, 179, 113)",
                       cursor: "pointer",
                       fontSize: "39px",
                       marginRight: "8px",
@@ -96,7 +96,7 @@ const AdminDashboard = () => {
                   />
                   <MdDelete
                     style={{
-                      color: "red",
+                      color: "#ff6347",
                       cursor: "pointer",
                       fontSize: "38px",
                     }}
@@ -127,7 +127,7 @@ const AdminDashboard = () => {
                 <p>Service: {selectedAppointment.service}</p>
                 <GrClose
                   style={{
-                    color: "red",
+                    color: "#ff6347",
                     cursor: "pointer",
                     fontSize: "24px",
                     marginTop: "16px",
