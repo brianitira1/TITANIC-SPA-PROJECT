@@ -33,7 +33,7 @@ const Hero = () => {
   return (
     <div className="hero-container">
       <motion.img
-      loading = "lazy"
+        loading="lazy"
         className="hero-image"
         src={heroImage}
         alt="Hero Image"
