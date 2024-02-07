@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import AboutImage from "../assets/images/aboutimage.jpg";
@@ -9,6 +9,21 @@ const AboutSection = () => {
   const { ref, inView } = useInView();
   const controlsText = useAnimation();
   const controlsImage = useAnimation();
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const handleImageLoad = () => {
+      setImageLoaded(true);
+    };
+
+    const image = new Image();
+    image.src = AboutImage;
+    image.addEventListener("load", handleImageLoad);
+
+    return () => {
+      image.removeEventListener("load", handleImageLoad);
+    };
+  }, []);
 
   useEffect(() => {
     if (inView) {
@@ -42,18 +57,15 @@ const AboutSection = () => {
               transition={{ duration: 0.5 }}
             >
               <h2 className="about-title">About Titanic SPA</h2>
-              <p
-                className="
-              p-text"
-              >
+              <p className="p-text">
                 Titanic SPA is a luxurious retreat inspired by the grandeur of
                 the legendary ship. Nestled in the heart of the city, our spa
                 offers a serene environment where you can relax and rejuvenate
                 your mind, body, and soul.
               </p>
               <p className="p-text-2">
-                Our expert team of therapists and aestheticians are dedicated to
-                providing personalized treatments to meet your unique needs.
+                Our expert team of therapists and aestheticians are dedicated
+                to providing personalized treatments to meet your unique needs.
                 From soothing massages to revitalizing facials, we offer a wide
                 range of services designed to enhance your well-being.
               </p>
