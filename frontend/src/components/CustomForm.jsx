@@ -1,18 +1,22 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"; // Importing motion from framer-motion for animation
+import { useNavigate } from "react-router-dom"; // Importing useNavigate for navigation
 
 const CustomForm = ({ onClose }) => {
-  const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // Initializing useNavigate hook for navigation
+  const [name, setName] = useState(""); // State for storing name input
+  const [password, setPassword] = useState(""); // State for storing password input
 
+  // Function to handle form submission
   const handleFormSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Preventing default form submission behavior
+    console.log("Name:", name); // Logging name input
+    console.log("Password:", password); // Logging password input
+    // Checking if name and password match expected values for authentication
     if (name === "brian" && password === "nomad") {
-      navigate("/admin-dashboard");
+      navigate("/admin-dashboard"); // Navigating to admin dashboard if authentication succeeds
     } else {
-      alert("Invalid credentials");
+      alert("Invalid credentials"); // Showing alert for invalid credentials
     }
   };
 
@@ -23,31 +27,43 @@ const CustomForm = ({ onClose }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
+      {/* Form title */}
       <h2 className="text-center mb-4">Welcome Administrators/Staff</h2>
       <div className="row justify-content-center">
         <div className="col-md-6">
+          {/* Form */}
           <form onSubmit={handleFormSubmit}>
+            {/* Name input field */}
             <div className="mb-3">
               <input
                 type="text"
                 className="form-control"
                 placeholder="Name"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  console.log("Name changed to:", e.target.value); // Logging name change
+                  setName(e.target.value); // Updating name state
+                }}
               />
             </div>
+            {/* Password input field */}
             <div className="mb-3">
               <input
                 type="password"
                 className="form-control"
                 placeholder="Password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  console.log("Password changed to:", e.target.value); // Logging password change
+                  setPassword(e.target.value); // Updating password state
+                }}
               />
             </div>
+            {/* Submit button */}
             <button type="submit" className="btn btn-primary me-2">
               Submit
             </button>
+            {/* Cancel button */}
             <button
               type="button"
               className="btn btn-secondary mt-2"

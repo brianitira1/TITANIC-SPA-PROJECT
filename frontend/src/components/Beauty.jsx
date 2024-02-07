@@ -6,7 +6,12 @@ import beautybg from "../assets/images/beautybg.jpg";
 
 import ClientAppointmentPage from "../utils/ClientAppointmentPage";
 
+/**
+ * Render the Beauty component
+ */
 const Beauty = () => {
+  // Log the rendering of Beauty component
+  console.log("Rendering Beauty component");
   return (
     <>
       <NavBar />

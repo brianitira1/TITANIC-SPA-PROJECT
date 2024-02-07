@@ -1,9 +1,10 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; // Importing motion from framer-motion for animation
 
-import "../styles/Footer.css";
+import "../styles/Footer.css"; // Importing CSS styles for the footer
 
 const Footer = () => {
+  // Variants for animation
   const variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -11,19 +12,23 @@ const Footer = () => {
 
   return (
     <div>
+      {/* Footer section */}
       <motion.footer
-        className="custom-footer py-5"
-        initial="hidden"
-        animate="visible"
-        variants={variants}
+        className="custom-footer py-5" // Applying custom styles to the footer
+        initial="hidden" // Initial animation state
+        animate="visible" // Animation state when component mounts
+        variants={variants} // Variants for animation
       >
+        {/* Container for footer content */}
         <div className="container footer-content">
+          {/* Row containing footer content */}
           <motion.div
             className="row"
             initial="hidden"
             animate="visible"
             variants={variants}
           >
+            {/* About section */}
             <motion.div
               className="col-lg-4 mb-4 mb-lg-0"
               initial="hidden"
@@ -37,6 +42,7 @@ const Footer = () => {
                 state-of-the-art facilities.
               </p>
             </motion.div>
+            {/* Connect with Us section */}
             <motion.div
               className="col-lg-4 mb-4 mb-lg-0"
               initial="hidden"
@@ -56,6 +62,7 @@ const Footer = () => {
                 </li>
               </ul>
             </motion.div>
+            {/* Contact Us section */}
             <motion.div
               className="col-lg-4"
               initial="hidden"
@@ -73,6 +80,7 @@ const Footer = () => {
             animate="visible"
             variants={variants}
           />
+          {/* Bottom section with copyright and links */}
           <motion.div
             className="row"
             initial="hidden"

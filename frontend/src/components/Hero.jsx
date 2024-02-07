@@ -6,24 +6,28 @@ import { useNavigate } from "react-router-dom";
 import CustomForm from "../components/CustomForm";
 
 const Hero = () => {
-  const clerk = useClerk();
-  const navigate = useNavigate();
-  const [showCustomForm, setShowCustomForm] = useState(false);
+  const clerk = useClerk(); // Initializing useClerk hook for authentication
+  const navigate = useNavigate(); // Initializing useNavigate hook for navigation
+  const [showCustomForm, setShowCustomForm] = useState(false); // State to manage whether the custom form is shown or not
 
+  // Function to handle opening the custom form
   const handleDashboardClick = () => {
     setShowCustomForm(true);
   };
 
+  // Function to handle closing the custom form
   const handleCloseCustomForm = () => {
     setShowCustomForm(false);
   };
 
+  // Function to handle the "Book Now" button click
   const handleBookNowClick = async () => {
     try {
-      await clerk.openSignIn();
-      const user = clerk.user;
+      console.log("Attempting to open sign in");
+      await clerk.openSignIn(); // Opening sign-in modal
+      const user = clerk.user; // Getting signed-in user
       if (user) {
-        navigate("/services");
+        navigate("/services"); // Navigating to services page if user is signed in
       }
     } catch (error) {
       console.error("Error signing in:", error);
@@ -32,6 +36,7 @@ const Hero = () => {
 
   return (
     <div className="hero-container">
+      {/* Hero image */}
       <motion.img
         loading="lazy"
         className="hero-image"
@@ -42,6 +47,7 @@ const Hero = () => {
         transition={{ duration: 1 }}
       />
       <div className="overlay"></div>
+      {/* Hero content */}
       <motion.div
         className="hero-content"
         style={{
@@ -55,6 +61,7 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
+        {/* Hero title */}
         <motion.h1
           className="hero-title"
           initial={{ opacity: 0 }}
@@ -63,6 +70,7 @@ const Hero = () => {
         >
           Experience Luxury Reborn
         </motion.h1>
+        {/* Hero subtitle */}
         <motion.p
           className="hero-subtitle"
           initial={{ opacity: 0 }}
@@ -71,7 +79,9 @@ const Hero = () => {
         >
           Indulge in the Ultimate Spa Experience
         </motion.p>
+        {/* Buttons */}
         <div>
+          {/* "Book Now" button */}
           <motion.button
             className="btn btn-primary btn-lg"
             onClick={handleBookNowClick}
@@ -81,6 +91,7 @@ const Hero = () => {
           >
             Book Now
           </motion.button>
+          {/* "Dashboard" button */}
           <motion.button
             className="btn btn-secondary btn-lg ml-2"
             onClick={handleDashboardClick}
@@ -94,6 +105,7 @@ const Hero = () => {
         </div>
       </motion.div>
 
+      {/* Render custom form if showCustomForm is true */}
       {showCustomForm && <CustomForm onClose={handleCloseCustomForm} />}
     </div>
   );

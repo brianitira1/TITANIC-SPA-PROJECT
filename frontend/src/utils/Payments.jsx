@@ -4,13 +4,14 @@ import "../styles/Payments.css";
 
 import NavBar from "../components/NavBar";
 
-import beautybg from "../assets/images/beautybg.jpg";
-
 import axios from "axios";
 
-import { useState } from 'react';
-import axios from 'axios';
-import beautybg from 'path_to_beautybg_image'; // import the beautybg image
+// Remove the duplicate import statements
+// import axios from 'axios';
+// import beautybg from 'path_to_beautybg_image'; // import the beautybg image
+
+// Import the beautybg image
+import beautybg from '../assets/images/beautybg.jpg';
 
 /**
  * Functional component for handling payments
@@ -27,7 +28,7 @@ const Payments = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://w54v58-5000.csb.app/token", {
+      const response = await axios.post("https://5000-brianitira1-titanicspap-rgfq7tezv88.ws-eu108.gitpod.io/token", {
         phone,
         amount,
       });

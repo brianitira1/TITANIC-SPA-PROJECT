@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 import { GoEye } from "react-icons/go";
 import { GrClose } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
-import supabase from "../databases/supabase";
+import supabase from "../databases/supabase"; // Importing supabase client
 
-import NavBar from "../components/NavBar";
+import NavBar from "../components/NavBar"; // Importing NavBar component
 
-import "../styles/AdminDashboard.css";
-import dashboardimage from "../assets/images/dashboardimage.jpg";
+import "../styles/AdminDashboard.css"; // Importing CSS file
+import dashboardimage from "../assets/images/dashboardimage.jpg"; // Importing dashboard image
 
 const AdminDashboard = () => {
-  const [appointments, setAppointments] = useState([]);
-  const [selectedAppointment, setSelectedAppointment] = useState(null);
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [appointments, setAppointments] = useState([]); // State for storing appointments
+  const [selectedAppointment, setSelectedAppointment] = useState(null); // State for storing selected appointment
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false); // State for showing delete confirmation modal
+  const [imageLoaded, setImageLoaded] = useState(false); // State for tracking image loading status
 
+  // Effect to fetch appointments from the database
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
@@ -28,31 +29,33 @@ const AdminDashboard = () => {
           throw error;
         }
 
-        setAppointments(data);
+        setAppointments(data); // Setting fetched appointments in state
       } catch (error) {
-        console.error("Error fetching appointments:", error.message);
+        console.error("Error fetching appointments:", error.message); // Logging error if fetching appointments fails
       }
     };
 
-    fetchAppointments();
+    fetchAppointments(); // Calling fetchAppointments function
   }, []);
 
+  // Effect to handle image loading
   useEffect(() => {
     const handleImageLoad = () => {
-      setImageLoaded(true);
+      setImageLoaded(true); // Setting image loading status to true when the image is loaded
     };
 
-    const image = new Image();
-    image.src = dashboardimage;
-    image.addEventListener("load", handleImageLoad);
+    const image = new Image(); // Creating a new image element
+    image.src = dashboardimage; // Setting image source
+    image.addEventListener("load", handleImageLoad); // Adding event listener for image load
 
     return () => {
-      image.removeEventListener("load", handleImageLoad);
+      image.removeEventListener("load", handleImageLoad); // Cleaning up by removing event listener on unmount
     };
   }, []);
 
+  // Function to handle deletion of appointment
   const handleDeleteAppointment = async () => {
-    if (!selectedAppointment) return;
+    if (!selectedAppointment) return; // If no appointment is selected, return
 
     try {
       const { error } = await supabase
@@ -68,20 +71,22 @@ const AdminDashboard = () => {
         prevAppointments.filter(
           (appointment) => appointment.id !== selectedAppointment.id,
         ),
-      );
+      ); // Filtering out the deleted appointment from the state
 
-      setSelectedAppointment(null);
-      setShowDeleteConfirmation(false);
+      setSelectedAppointment(null); // Resetting selected appointment
+      setShowDeleteConfirmation(false); // Hiding delete confirmation modal
     } catch (error) {
-      console.error("Error deleting appointment:", error.message);
+      console.error("Error deleting appointment:", error.message); // Logging error if deleting appointment fails
     }
   };
 
+  // Function to close modal
   const handleCloseModal = () => {
-    setSelectedAppointment(null);
-    setShowDeleteConfirmation(false);
+    setSelectedAppointment(null); // Resetting selected appointment
+    setShowDeleteConfirmation(false); // Hiding delete confirmation modal
   };
 
+  // Function to render appointment items
   const renderAppointmentItems = () => {
     return appointments.map((appointment) => (
       <li
@@ -97,6 +102,7 @@ const AdminDashboard = () => {
           <p>Service: {appointment.service}</p>
         </div>
         <div>
+          {/* Icon to view appointment details */}
           <GoEye
             style={{
               color: "rgb(60, 179, 113)",
@@ -106,6 +112,7 @@ const AdminDashboard = () => {
             }}
             onClick={() => setSelectedAppointment(appointment)}
           />
+          {/* Icon to delete appointment */}
           <MdDelete
             style={{
               color: "#ff6347",
@@ -124,8 +131,8 @@ const AdminDashboard = () => {
 
   return (
     <div className="container" id="admin-dashboard">
-      <NavBar />
-      {!imageLoaded && <div>Loading...</div>}
+      <NavBar /> {/* Rendering NavBar component */}
+      {!imageLoaded && <div>Loading...</div>} {/* Displaying loading message if image is not loaded */}
       {imageLoaded && (
         <img
           loading="lazy"
@@ -140,7 +147,7 @@ const AdminDashboard = () => {
         <div className="col-md-8">
           <h2>Appointments</h2>
           <ul className="list-group">
-            {renderAppointmentItems()}
+            {renderAppointmentItems()} {/* Rendering appointment items */}
           </ul>
         </div>
         <div className="col-md-4">
@@ -158,6 +165,7 @@ const AdminDashboard = () => {
                 <p>Email: {selectedAppointment.email}</p>
                 <p>Gender: {selectedAppointment.gender}</p>
                 <p>Service: {selectedAppointment.service}</p>
+                {/* Icon to close modal */}
                 <GrClose
                   style={{
                     color: "#ff6347",
@@ -167,6 +175,7 @@ const AdminDashboard = () => {
                   }}
                   onClick={handleCloseModal}
                 />
+                {/* Icon to confirm appointment deletion */}
                 {showDeleteConfirmation && (
                   <MdDelete
                     style={{
