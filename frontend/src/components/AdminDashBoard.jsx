@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaTrash, FaEye, FaTimes } from "react-icons/fa";
 import supabase from "../databases/supabase";
 
 import "../styles/AdminDashboard.css";
@@ -6,6 +7,7 @@ import "../styles/AdminDashboard.css";
 const AdminDashboard = () => {
   const [appointments, setAppointments] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -48,11 +50,16 @@ const AdminDashboard = () => {
         ),
       );
 
-      // Close the modal after deleting appointment
       setSelectedAppointment(null);
+      setShowDeleteConfirmation(false); // Reset delete confirmation
     } catch (error) {
       console.error("Error deleting appointment:", error.message);
     }
+  };
+
+  const handleCloseModal = () => {
+    setSelectedAppointment(null);
+    setShowDeleteConfirmation(false);
   };
 
   return (
@@ -76,12 +83,26 @@ const AdminDashboard = () => {
                   <p>Service: {appointment.service}</p>
                 </div>
                 <div>
-                  <button
-                    className="btn btn-danger me-2"
+                  <FaEye
+                    style={{
+                      color: "blue",
+                      cursor: "pointer",
+                      fontSize: "24px",
+                      marginRight: "8px",
+                    }}
                     onClick={() => setSelectedAppointment(appointment)}
-                  >
-                    Delete
-                  </button>
+                  />
+                  <FaTrash
+                    style={{
+                      color: "red",
+                      cursor: "pointer",
+                      fontSize: "24px",
+                    }}
+                    onClick={() => {
+                      setSelectedAppointment(appointment);
+                      setShowDeleteConfirmation(true);
+                    }}
+                  />
                 </div>
               </li>
             ))}
@@ -102,12 +123,26 @@ const AdminDashboard = () => {
                 <p>Email: {selectedAppointment.email}</p>
                 <p>Gender: {selectedAppointment.gender}</p>
                 <p>Service: {selectedAppointment.service}</p>
-                <button
-                  className="btn btn-danger"
-                  onClick={handleDeleteAppointment}
-                >
-                  Confirm Delete
-                </button>
+                <FaTimes
+                  style={{
+                    color: "red",
+                    cursor: "pointer",
+                    fontSize: "24px",
+                    marginTop: "16px",
+                  }}
+                  onClick={handleCloseModal}
+                />
+                {showDeleteConfirmation && (
+                  <FaTrash
+                    style={{
+                      color: "red",
+                      cursor: "pointer",
+                      fontSize: "24px",
+                      marginTop: "16px",
+                    }}
+                    onClick={handleDeleteAppointment}
+                  />
+                )}
               </div>
             </div>
           )}
