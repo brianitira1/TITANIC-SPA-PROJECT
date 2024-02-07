@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 
 import "../styles/Footer.css";
 
-import footerimage from "../assets/images/footer.jpg";
-
 const Footer = () => {
   const variants = {
     hidden: { opacity: 0, y: 20 },
