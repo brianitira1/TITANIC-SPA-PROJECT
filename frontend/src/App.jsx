@@ -12,7 +12,13 @@ import Wellness from "./components/Wellness";
 import Footer from "./components/Footer";
 import Payments from "./utils/Payments";
 
+/**
+ * Renders the Router and Routes with specified paths and elements.
+ */
 const app = () => {
+  // Log a message
+  console.log('Rendering Router and Routes');
+  // Return the Router with nested Routes
   return (
     <Router>
       <Routes>

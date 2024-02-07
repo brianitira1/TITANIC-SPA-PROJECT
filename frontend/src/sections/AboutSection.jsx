@@ -12,9 +12,17 @@ const AboutSection = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    const handleImageLoad = () => {
-      setImageLoaded(true);
-    };
+/**
+ * Handles the image load event
+ */
+const handleImageLoad = () => {
+  // Log that the image is loaded
+  console.log("Image loaded");
+  // Set the image loaded state to true
+  setImageLoaded(true);
+  // Log that the image loading state has been updated
+  console.log("Image loading state updated");
+};
 
     const image = new Image();
     image.src = AboutImage;

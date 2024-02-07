@@ -6,7 +6,14 @@ import massagebg from "../assets/images/massagebg.jpg";
 
 import ClientAppointmentPage from "../utils/ClientAppointmentPage";
 
+/**
+ * Renders the Massage component
+ */
 const Massage = () => {
+  // Log statement to indicate rendering of component
+  console.log('Rendering Massage component');
+
+  // Return JSX for the Massage component
   return (
     <>
       <NavBar />

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import supabase from "../databases/supabase";
-import { toast, Toaster } from "react-hot-toast";
+import supabase from "../databases/supabase"; // Importing supabase for database interaction
+import { toast, Toaster } from "react-hot-toast"; // Importing toast for notifications
 
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router"; // Importing useNavigate for programmatic navigation
 
-import "../styles/AppointmentForm.css";
+import "../styles/AppointmentForm.css"; // Importing CSS styles
 
 const ClientAppointmentPage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initializing useNavigate hook for navigation
 
+  // State for form data
   const [formData, setFormData] = useState({
     firstname: "",
     surname: "",
@@ -21,40 +22,49 @@ const ClientAppointmentPage = () => {
     service: "",
   });
 
+  // Function to handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    // Parsing age as integer
     const parsedValue = name === "age" ? parseInt(value, 10) || "" : value;
+
+    // Updating form data state
     setFormData((prevState) => ({
       ...prevState,
       [name]: parsedValue,
     }));
   };
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Checking if any field is empty
     const isEmptyField = Object.values(formData).some((value) => value === "");
     if (isEmptyField) {
+      // Displaying error toast if any field is empty
       toast.error("Please fill in all fields.");
       return;
     }
 
     try {
-      const { data, error } = await supabase
-        .from("appointments")
-        .insert([formData]);
+      // Inserting form data into the database
+      const { data, error } = await supabase.from("appointments").insert([formData]);
       if (error) {
+        // Logging error message if there's an error
         console.error("Error submitting appointment:", error.message);
       } else {
+        // Logging success message and displaying success toast
         console.log("Appointment submitted successfully:", data);
-
         toast.success("Form submitted successfully.");
 
+        // Navigating to payments page after 2 seconds
         setTimeout(() => {
           navigate("/payments");
         }, 2000);
 
+        // Resetting form data after submission
         setFormData({
           firstname: "",
           surname: "",
@@ -68,6 +78,7 @@ const ClientAppointmentPage = () => {
         });
       }
     } catch (error) {
+      // Logging error message if there's an error
       console.error("Error submitting appointment:", error.message);
     }
   };
@@ -192,7 +203,7 @@ const ClientAppointmentPage = () => {
           Submit
         </button>
       </form>
-      <Toaster />
+      <Toaster /> {/* Toast component for displaying notifications */}
     </div>
   );
 };

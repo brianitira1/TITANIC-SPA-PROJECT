@@ -8,10 +8,21 @@ import beautybg from "../assets/images/beautybg.jpg";
 
 import axios from "axios";
 
-const Payments = () => {
-  const [phone, setPhone] = useState("");
-  const [amount, setAmount] = useState("");
+import { useState } from 'react';
+import axios from 'axios';
+import beautybg from 'path_to_beautybg_image'; // import the beautybg image
 
+/**
+ * Functional component for handling payments
+ */
+const Payments = () => {
+  const [phone, setPhone] = useState(""); // phone state and setter
+  const [amount, setAmount] = useState(""); // amount state and setter
+
+  /**
+   * Handle payment form submission
+   * @param {Object} e - event object
+   */
   const handlePaymentSubmit = async (e) => {
     e.preventDefault();
 
@@ -20,14 +31,15 @@ const Payments = () => {
         phone,
         amount,
       });
-      console.log(response.data);
+      console.log("Payment successful:", response.data);
     } catch (error) {
-      console.error(error);
+      console.error("Payment failed:", error);
     }
   };
 
   return (
     <>
+      {/* Render the navigation bar */}
       <NavBar />
       <div
         className="
@@ -35,7 +47,7 @@ const Payments = () => {
       >
         <img
           loading="lazy"
-          src={beautybg}
+          src={beautybg} // Render the beautybg image
           alt="Hero Image"
           className="img-fluid hero-image"
         />

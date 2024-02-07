@@ -20,7 +20,9 @@ const ServicesPage = () => {
   const [beautyImageLoaded, setBeautyImageLoaded] = useState(false);
 
   useEffect(() => {
+    // Function to handle services image loading
     const handleServicesImageLoad = () => {
+      console.log("Services image loaded");
       setServicesImageLoaded(true);
     };
 
@@ -28,13 +30,16 @@ const ServicesPage = () => {
     servicesImageElement.src = servicesimage;
     servicesImageElement.addEventListener("load", handleServicesImageLoad);
 
+    // Cleanup function to remove event listener
     return () => {
       servicesImageElement.removeEventListener("load", handleServicesImageLoad);
     };
   }, []);
 
+  // Similar useEffect for massage image loading
   useEffect(() => {
     const handleMassageImageLoad = () => {
+      console.log("Massage image loaded");
       setMassageImageLoaded(true);
     };
 
@@ -47,8 +52,10 @@ const ServicesPage = () => {
     };
   }, []);
 
+  // Similar useEffect for wellness image loading
   useEffect(() => {
     const handleWellnessImageLoad = () => {
+      console.log("Wellness image loaded");
       setWellnessImageLoaded(true);
     };
 
@@ -61,8 +68,10 @@ const ServicesPage = () => {
     };
   }, []);
 
+  // Similar useEffect for beauty image loading
   useEffect(() => {
     const handleBeautyImageLoad = () => {
+      console.log("Beauty image loaded");
       setBeautyImageLoaded(true);
     };
 
@@ -75,6 +84,7 @@ const ServicesPage = () => {
     };
   }, []);
 
+  // Function to handle service click
   const handleServiceClick = (service) => {
     if (service === "massage") {
       navigate("/massage");
@@ -87,8 +97,9 @@ const ServicesPage = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar /> {/* Navigation bar component */}
       <div className="hero-container" id="services-container">
+        {/* Animated header */}
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -98,6 +109,7 @@ const ServicesPage = () => {
         >
           Discover Our Luxurious Services
         </motion.h1>
+        {/* Services image */}
         {servicesImageLoaded && (
           <motion.img
             initial={{ opacity: 0, scale: 0.5 }}
@@ -110,8 +122,10 @@ const ServicesPage = () => {
         )}
         <div className="overlay-services"></div>
 
+        {/* Services container */}
         <div className="container mt-5" id="services">
           <div className="row">
+            {/* Card for Beauty service */}
             <div className="col-md-4 col-lg-4 col-sx-12 col-sm-12">
               <div
                 className="card bg-transparent"
@@ -123,6 +137,7 @@ const ServicesPage = () => {
                   transition={{ duration: 1, delay: 1 }}
                   className="card-body"
                 >
+                  {/* Beauty service image */}
                   {beautyImageLoaded && (
                     <img
                       loading="lazy"
@@ -137,7 +152,7 @@ const ServicesPage = () => {
                 </motion.div>
               </div>
             </div>
-
+            {/* Card for Massage service */}
             <div className="col-md-4 col-lg-4 col-sx-12 col-sm-12">
               <div
                 className="card bg-transparent"
@@ -149,6 +164,7 @@ const ServicesPage = () => {
                   transition={{ duration: 1, delay: 1 }}
                   className="card-body"
                 >
+                  {/* Massage service image */}
                   {massageImageLoaded && (
                     <img
                       loading="lazy"
@@ -162,7 +178,7 @@ const ServicesPage = () => {
                 </motion.div>
               </div>
             </div>
-
+            {/* Card for Wellness service */}
             <div className="col-md-4 col-lg-4 col-sx-12 col-sm-12">
               <div
                 className="card bg-transparent"
@@ -174,6 +190,7 @@ const ServicesPage = () => {
                   transition={{ duration: 1, delay: 1 }}
                   className="card-body"
                 >
+                  {/* Wellness service image */}
                   {wellnessImageLoaded && (
                     <img
                       loading="lazy"
