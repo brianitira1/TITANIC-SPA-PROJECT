@@ -16,7 +16,7 @@ import Payments from "./utils/Payments";
  */
 const App: React.FC = () => {
   // Log a message
-  console.log('Rendering Router and Routes');
+  console.log("Rendering Router and Routes");
   // Return the Router with nested Routes
   return (
     <Router>

@@ -26,7 +26,7 @@ const Payments = () => {
         {
           phone,
           amount,
-        },
+        }
       );
       console.log("Payment successful:", response.data);
     } catch (error) {
