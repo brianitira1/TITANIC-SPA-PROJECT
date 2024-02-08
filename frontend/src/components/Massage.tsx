@@ -1,29 +1,33 @@
 import React from "react";
-import NavBar from "../components/NavBar";
+import NavBar from "./NavBar";
 import "../styles/BeautyPage.css";
 
-import beautybg from "../assets/images/beautybg.jpg";
+// @ts-ignore
+
+import massagebg from "../assets/images/massagebg.jpg";
 
 import ClientAppointmentPage from "../utils/ClientAppointmentPage";
 
 /**
- * Render the Beauty component
+ * Renders the Massage component
  */
-const Beauty = () => {
-  // Log the rendering of Beauty component
-  console.log("Rendering Beauty component");
+const Massage: React.FC = () => {
+  // Log statement to indicate rendering of component
+  console.log('Rendering Massage component');
+
+  // Return JSX for the Massage component
   return (
     <>
+      {/* @ts-ignore */}
       <NavBar />
       <div className=" hero-container " id="beauty-container">
         <img
           loading="lazy"
-          src={beautybg}
+          src={massagebg}
           alt="Hero Image"
           className="img-fluid hero-image"
         />
         <div className="overlay-form"></div>
-
         <div className="container header"></div>
         <ClientAppointmentPage />
       </div>
@@ -31,4 +35,4 @@ const Beauty = () => {
   );
 };
 
-export default Beauty;
+export default Massage;

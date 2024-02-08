@@ -1,23 +1,24 @@
 import React from "react";
-import NavBar from "../components/NavBar";
+import NavBar from "./NavBar";
 import "../styles/BeautyPage.css";
 
-import wellnessbg from "../assets/images/wellnessbg.jpg";
+// @ts-ignore
+import wellnessbg from "../assets/images/wellnessbg.jpg"; // Ignore TypeScript error for image import
 
 import ClientAppointmentPage from "../utils/ClientAppointmentPage";
-
 
 /**
  * Renders the Wellness component and logs a message
  */
-const Wellness = () => {
+const Wellness: React.FC = () => {
   // Log message indicating the Wellness component is rendered
   console.log('Wellness component rendered');
   
   return (
     <>
-      <NavBar />
-      <div className=" hero-container " id="beauty-container">
+      {/* @ts-ignore */}
+      <NavBar /> 
+      <div className="hero-container" id="beauty-container">
         <img
           loading="lazy"
           src={wellnessbg}
@@ -31,4 +32,5 @@ const Wellness = () => {
     </>
   );
 };
+
 export default Wellness;

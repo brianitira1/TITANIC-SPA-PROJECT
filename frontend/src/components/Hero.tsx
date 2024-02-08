@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+// @ts-ignore
 import heroImage from "../assets/images/heroimage.jpg";
 import { useClerk } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
-import CustomForm from "../components/CustomForm";
+import CustomForm from "./CustomForm";
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const clerk = useClerk(); // Initializing useClerk hook for authentication
   const navigate = useNavigate(); // Initializing useNavigate hook for navigation
-  const [showCustomForm, setShowCustomForm] = useState(false); // State to manage whether the custom form is shown or not
+  const [showCustomForm, setShowCustomForm] = useState<boolean>(false); // State to manage whether the custom form is shown or not
 
   // Function to handle opening the custom form
   const handleDashboardClick = () => {

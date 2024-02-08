@@ -1,26 +1,42 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GoEye } from "react-icons/go";
 import { GrClose } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
 import supabase from "../databases/supabase"; // Importing supabase client
 
-import NavBar from "../components/NavBar"; // Importing NavBar component
+import NavBar from "./NavBar"; // Importing NavBar component
 
 import "../styles/AdminDashboard.css"; // Importing CSS file
+
+// @ts-ignore
 import dashboardimage from "../assets/images/dashboardimage.jpg"; // Importing dashboard image
 
-const AdminDashboard = () => {
-  const [appointments, setAppointments] = useState([]); // State for storing appointments
-  const [selectedAppointment, setSelectedAppointment] = useState(null); // State for storing selected appointment
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false); // State for showing delete confirmation modal
-  const [imageLoaded, setImageLoaded] = useState(false); // State for tracking image loading status
+interface Appointment {
+  id: string;
+  firstname: string;
+  surname: string;
+  age: number;
+  description: string;
+  date: string;
+  phoneNumber: string;
+  email: string;
+  gender: string;
+  service: string;
+}
+
+const AdminDashboard: React.FC = () => {
+  const [appointments, setAppointments] = useState<Appointment[]>([]); // State for storing appointments
+  const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null); // State for storing selected appointment
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState<boolean>(false); // State for showing delete confirmation modal
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false); // State for tracking image loading status
 
   // Effect to fetch appointments from the database
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
         const { data, error } = await supabase
-          .from("appointments")
+        // @ts-ignore
+          .from<Appointment>("appointments")
           .select(
             "firstname, surname, age, description, date, phoneNumber, email, id, gender, service",
           );
@@ -29,7 +45,7 @@ const AdminDashboard = () => {
           throw error;
         }
 
-        setAppointments(data); // Setting fetched appointments in state
+        setAppointments(data || []); // Setting fetched appointments in state
       } catch (error) {
         console.error("Error fetching appointments:", error.message); // Logging error if fetching appointments fails
       }
@@ -59,7 +75,8 @@ const AdminDashboard = () => {
 
     try {
       const { error } = await supabase
-        .from("appointments")
+        // @ts-ignore
+        .from<Appointment>("appointments")
         .delete()
         .eq("id", selectedAppointment.id);
 
@@ -131,6 +148,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="container" id="admin-dashboard">
+      {/* @ts-ignore */}
       <NavBar /> {/* Rendering NavBar component */}
       {!imageLoaded && <div>Loading...</div>} {/* Displaying loading message if image is not loaded */}
       {imageLoaded && (

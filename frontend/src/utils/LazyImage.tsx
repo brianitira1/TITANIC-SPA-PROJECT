@@ -2,18 +2,16 @@ import React, { useState, useEffect } from "react";
 
 /**
  * Lazy loaded image component
- * @param {string} src - Image source URL
- * @param {string} alt - Image alternate text
- * @param {object} props - Additional image props
+ * @param src - Image source URL
+ * @param alt - Image alternate text
+ * @param props - Additional image props
+ * @returns JSX.Element
  */
-const LazyImage = ({ src, alt, ...props }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
+const LazyImage: React.FC<{ src: string, alt: string, props: object }> = ({ src, alt, ...props }) => {
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    /**
-     * Function to handle image load event
-     */
-    const handleImageLoad = () => {
+    const handleImageLoad = (): void => {
       setImageLoaded(true);
     };
 
@@ -22,9 +20,6 @@ const LazyImage = ({ src, alt, ...props }) => {
     image.addEventListener("load", handleImageLoad);
     console.log(`Image loading: ${src}`);
 
-    /**
-     * Clean up function to remove event listener
-     */
     return () => {
       image.removeEventListener("load", handleImageLoad);
       console.log(`Image load event removed: ${src}`);

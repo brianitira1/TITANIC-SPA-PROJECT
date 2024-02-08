@@ -1,11 +1,11 @@
 import React from "react";
-import { motion } from "framer-motion"; // Importing motion from framer-motion for animation
+import { motion, Variants } from "framer-motion"; // Importing motion from framer-motion for animation
 
 import "../styles/Footer.css"; // Importing CSS styles for the footer
 
-const Footer = () => {
+const Footer: React.FC = () => {
   // Variants for animation
-  const variants = {
+  const variants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
@@ -71,7 +71,7 @@ const Footer = () => {
             >
               <h5 className="mb-3">Contact Us</h5>
               <p>Email: brianitira@programmer.net</p>
-              <p>Phone: +254 (784) 49-1054</p>
+              <p>Phone: +254 (784) 67-6284</p>
             </motion.div>
           </motion.div>
           <motion.hr

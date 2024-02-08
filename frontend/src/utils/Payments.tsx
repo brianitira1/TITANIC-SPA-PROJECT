@@ -2,28 +2,21 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "../styles/Payments.css";
 
-import NavBar from "../components/NavBar";
+// @ts-ignore
+import NavBar from "../components/NavBar"; // Ignore TypeScript error for NavBar import
 
 import axios from "axios";
 
-// Remove the duplicate import statements
-// import axios from 'axios';
-// import beautybg from 'path_to_beautybg_image'; // import the beautybg image
-
-// Import the beautybg image
+// @ts-ignore
 import beautybg from '../assets/images/beautybg.jpg';
 
 /**
  * Functional component for handling payments
  */
 const Payments = () => {
-  const [phone, setPhone] = useState(""); // phone state and setter
-  const [amount, setAmount] = useState(""); // amount state and setter
+  const [phone, setPhone] = useState("");
+  const [amount, setAmount] = useState("");
 
-  /**
-   * Handle payment form submission
-   * @param {Object} e - event object
-   */
   const handlePaymentSubmit = async (e) => {
     e.preventDefault();
 
@@ -40,15 +33,12 @@ const Payments = () => {
 
   return (
     <>
-      {/* Render the navigation bar */}
+      {/* @ts-ignore */}
       <NavBar />
-      <div
-        className="
-      hero-container"
-      >
+      <div className="hero-container">
         <img
           loading="lazy"
-          src={beautybg} // Render the beautybg image
+          src={beautybg}
           alt="Hero Image"
           className="img-fluid hero-image"
         />

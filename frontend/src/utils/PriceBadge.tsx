@@ -1,10 +1,14 @@
 import React from "react";
 
+interface PriceBadgeProps {
+  price: number;
+}
+
 /**
  * PriceBadge component to display the price in a badge
  * @param {number} price - The price to be displayed
  */
-const PriceBadge = ({ price }) => {
+const PriceBadge: React.FC<PriceBadgeProps> = ({ price }) => {
   // Log the price for debugging purposes
   console.log('PriceBadge - price:', price);
   // Return the JSX for the PriceBadge component

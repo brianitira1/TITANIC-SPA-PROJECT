@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { motion } from "framer-motion"; // Importing motion from framer-motion for animation
 import { useNavigate } from "react-router-dom"; // Importing useNavigate for navigation
 
-const CustomForm = ({ onClose }) => {
+interface CustomFormProps {
+  onClose: () => void;
+}
+
+const CustomForm: React.FC<CustomFormProps> = ({ onClose }) => {
   const navigate = useNavigate(); // Initializing useNavigate hook for navigation
-  const [name, setName] = useState(""); // State for storing name input
-  const [password, setPassword] = useState(""); // State for storing password input
+  const [name, setName] = useState<string>(""); // State for storing name input
+  const [password, setPassword] = useState<string>(""); // State for storing password input
 
   // Function to handle form submission
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Preventing default form submission behavior
     console.log("Name:", name); // Logging name input
     console.log("Password:", password); // Logging password input

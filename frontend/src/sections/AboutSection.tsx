@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import AboutImage from "../assets/images/aboutimage.jpg";
+
+// @ts-ignore
+import AboutImage from "../assets/images/aboutimage.jpg"; // Import the image
 
 import "../styles/About.css";
 
-const AboutSection = () => {
+const AboutSection: React.FC = () => {
   const { ref, inView } = useInView();
   const controlsText = useAnimation();
   const controlsImage = useAnimation();
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-/**
- * Handles the image load event
- */
-const handleImageLoad = () => {
-  // Log that the image is loaded
-  console.log("Image loaded");
-  // Set the image loaded state to true
-  setImageLoaded(true);
-  // Log that the image loading state has been updated
-  console.log("Image loading state updated");
-};
+    /**
+     * Handles the image load event
+     */
+    const handleImageLoad = () => {
+      // Log that the image is loaded
+      console.log("Image loaded");
+      // Set the image loaded state to true
+      setImageLoaded(true);
+      // Log that the image loading state has been updated
+      console.log("Image loading state updated");
+    };
 
     const image = new Image();
     image.src = AboutImage;
@@ -48,7 +50,7 @@ const handleImageLoad = () => {
       className="about-section"
       style={{
         height: "100vh",
-        backgroundImage: `url(${AboutImage})`,
+        backgroundImage: `url(${AboutImage})`, // Use the imported image
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

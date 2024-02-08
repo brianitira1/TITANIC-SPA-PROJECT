@@ -1,7 +1,6 @@
+import React from "react";
 import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Home from "./components/Home";
 import SuccessPage from "./components/SuccessPage";
 import AdminDashboard from "./components/AdminDashBoard";
@@ -15,7 +14,7 @@ import Payments from "./utils/Payments";
 /**
  * Renders the Router and Routes with specified paths and elements.
  */
-const app = () => {
+const App: React.FC = () => {
   // Log a message
   console.log('Rendering Router and Routes');
   // Return the Router with nested Routes
@@ -36,4 +35,4 @@ const app = () => {
   );
 };
 
-export default app;
+export default App;

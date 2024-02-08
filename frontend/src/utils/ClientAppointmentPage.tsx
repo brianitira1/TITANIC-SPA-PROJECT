@@ -6,11 +6,23 @@ import { useNavigate } from "react-router"; // Importing useNavigate for program
 
 import "../styles/AppointmentForm.css"; // Importing CSS styles
 
-const ClientAppointmentPage = () => {
+interface FormData {
+  firstname: string;
+  surname: string;
+  age: string | number;
+  gender: string;
+  date: string;
+  phoneNumber: string;
+  email: string;
+  description: string;
+  service: string;
+}
+
+const ClientAppointmentPage: React.FC = () => {
   const navigate = useNavigate(); // Initializing useNavigate hook for navigation
 
   // State for form data
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     firstname: "",
     surname: "",
     age: "",
@@ -23,7 +35,7 @@ const ClientAppointmentPage = () => {
   });
 
   // Function to handle form input changes
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
     // Parsing age as integer
@@ -37,7 +49,7 @@ const ClientAppointmentPage = () => {
   };
 
   // Function to handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Checking if any field is empty
@@ -194,7 +206,7 @@ const ClientAppointmentPage = () => {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            rows="1"
+            rows={1}
             required
           ></textarea>
         </div>

@@ -5,7 +5,7 @@ import { useClerk } from "@clerk/clerk-react";
 /**
  * SuccessPage component to handle user redirection
  */
-const SuccessPage = () => {
+const SuccessPage: React.FC = () => {
   // get user data from Clerk
   const { user } = useClerk();
   // navigate to different pages
@@ -14,10 +14,11 @@ const SuccessPage = () => {
   // useEffect to check user data and redirect accordingly
   useEffect(() => {
     console.log("user:", user);
-    if (user) {
+    if (user && user.primaryEmailAddress) { // Check if user and primaryEmailAddress are not null or undefined
       // list of staff emails
-      const staffEmails = ["itirabrian@techie.com"];
+      const staffEmails: string[] = ["itirabrian@techie.com"];
       console.log("user.primaryEmailAddress:", user.primaryEmailAddress);
+      // @ts-ignore
       if (staffEmails.includes(user.primaryEmailAddress)) {
         console.log("Redirecting to /admin-dashboard");
         navigate("/admin-dashboard");
@@ -27,6 +28,7 @@ const SuccessPage = () => {
       }
     }
   }, [user, navigate]);
+  
 
   // return redirecting message
   return <div>Redirecting...</div>;

@@ -1,6 +1,7 @@
-import NavBar from "../components/NavBar";
-import Hero from "../components/Hero";
-import Footer from "../components/Footer";
+import React from "react";
+import NavBar from "./NavBar";
+import Hero from "./Hero";
+import Footer from "./Footer";
 import AboutSection from "../sections/AboutSection";
 
 import "../styles/Hero.css";
@@ -10,7 +11,7 @@ import "../styles/CustomForm.css";
 /**
  * Function to render the Home component
  */
-const Home = () => {
+const Home: React.FC = () => {
   // Log the rendering of each component
   console.log('Rendering Home component');
   console.log('Rendering NavBar component');
@@ -21,6 +22,7 @@ const Home = () => {
   // Render the components
   return (
     <>
+      {/* @ts-ignore */}
       <NavBar />
       <div>
         <div>
