@@ -1,9 +1,12 @@
-import { useNavigate } from "react-router-dom"; // Importing useNavigate hook for programmatic navigation
-import { useClerk } from "@clerk/clerk-react"; // Importing useClerk hook from Clerk for authentication
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useClerk } from "@clerk/clerk-react";
+import { MdClose } from "react-icons/md"; // Importing MdClose icon from Material Design Icons
 
 const NavBar = ({ scrollToFooter }) => {
-  const navigate = useNavigate(); // Initializing useNavigate hook for navigation
-  const clerk = useClerk(); // Initializing useClerk hook for authentication
+  const navigate = useNavigate();
+  const clerk = useClerk();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Function to handle navigation to services page
   const handleNavigation = async () => {
@@ -41,16 +44,20 @@ const NavBar = ({ scrollToFooter }) => {
         <button
           className="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <span className="navbar-toggler-icon"></span>
+          {isMenuOpen ? (
+            <MdClose /> // Render MdClose icon when navbar is open
+          ) : (
+            <span className="navbar-toggler-icon"></span>
+          )}
         </button>
         {/* Navbar menu */}
-        <div className="collapse navbar-collapse custom-nav" id="navbarNav">
+        <div
+          className={`collapse navbar-collapse custom-nav ${
+            isMenuOpen ? "show" : ""
+          }`}
+        >
           <div className="ml-auto">
             <ul className="navbar-nav">
               {/* About section link */}
