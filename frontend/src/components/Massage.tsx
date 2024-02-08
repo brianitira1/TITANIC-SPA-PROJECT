@@ -13,7 +13,7 @@ import ClientAppointmentPage from "../utils/ClientAppointmentPage";
  */
 const Massage: React.FC = () => {
   // Log statement to indicate rendering of component
-  console.log('Rendering Massage component');
+  console.log("Rendering Massage component");
 
   // Return JSX for the Massage component
   return (

@@ -74,8 +74,8 @@ const AboutSection: React.FC = () => {
                 your mind, body, and soul.
               </p>
               <p className="p-text-2">
-                Our expert team of therapists and aestheticians are dedicated
-                to providing personalized treatments to meet your unique needs.
+                Our expert team of therapists and aestheticians are dedicated to
+                providing personalized treatments to meet your unique needs.
                 From soothing massages to revitalizing facials, we offer a wide
                 range of services designed to enhance your well-being.
               </p>

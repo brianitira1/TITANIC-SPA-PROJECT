@@ -8,7 +8,7 @@ import NavBar from "../components/NavBar"; // Ignore TypeScript error for NavBar
 import axios from "axios";
 
 // @ts-ignore
-import beautybg from '../assets/images/beautybg.jpg';
+import beautybg from "../assets/images/beautybg.jpg";
 
 /**
  * Functional component for handling payments
@@ -21,10 +21,13 @@ const Payments = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://5000-brianitira1-titanicspap-rgfq7tezv88.ws-eu108.gitpod.io/token", {
-        phone,
-        amount,
-      });
+      const response = await axios.post(
+        "https://5000-brianitira1-titanicspap-rgfq7tezv88.ws-eu108.gitpod.io/token",
+        {
+          phone,
+          amount,
+        },
+      );
       console.log("Payment successful:", response.data);
     } catch (error) {
       console.error("Payment failed:", error);

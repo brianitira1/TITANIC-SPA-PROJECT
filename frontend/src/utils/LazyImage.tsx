@@ -7,7 +7,11 @@ import React, { useState, useEffect } from "react";
  * @param props - Additional image props
  * @returns JSX.Element
  */
-const LazyImage: React.FC<{ src: string, alt: string, props: object }> = ({ src, alt, ...props }) => {
+const LazyImage: React.FC<{ src: string; alt: string; props: object }> = ({
+  src,
+  alt,
+  ...props
+}) => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   useEffect(() => {

@@ -10,7 +10,7 @@ interface PriceBadgeProps {
  */
 const PriceBadge: React.FC<PriceBadgeProps> = ({ price }) => {
   // Log the price for debugging purposes
-  console.log('PriceBadge - price:', price);
+  console.log("PriceBadge - price:", price);
   // Return the JSX for the PriceBadge component
   return (
     <div className="position-relative">

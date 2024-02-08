@@ -20,9 +20,11 @@ const ServicesPage: React.FC = () => {
   const navigate = useNavigate();
 
   const prices = ["Ksh 50000", "Ksh 10000", "Ksh 20000"];
-  const [servicesImageLoaded, setServicesImageLoaded] = useState<boolean>(false);
+  const [servicesImageLoaded, setServicesImageLoaded] =
+    useState<boolean>(false);
   const [massageImageLoaded, setMassageImageLoaded] = useState<boolean>(false);
-  const [wellnessImageLoaded, setWellnessImageLoaded] = useState<boolean>(false);
+  const [wellnessImageLoaded, setWellnessImageLoaded] =
+    useState<boolean>(false);
   const [beautyImageLoaded, setBeautyImageLoaded] = useState<boolean>(false);
 
   useEffect(() => {
@@ -108,7 +110,7 @@ const ServicesPage: React.FC = () => {
   return (
     <>
       {/* @ts-ignore */}
-      <NavBar /> 
+      <NavBar />
       <div className="hero-container" id="services-container">
         {/* Animated header */}
         <motion.h1

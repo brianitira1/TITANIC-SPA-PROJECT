@@ -35,7 +35,11 @@ const ClientAppointmentPage: React.FC = () => {
   });
 
   // Function to handle form input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
     const { name, value } = e.target;
 
     // Parsing age as integer
@@ -62,7 +66,9 @@ const ClientAppointmentPage: React.FC = () => {
 
     try {
       // Inserting form data into the database
-      const { data, error } = await supabase.from("appointments").insert([formData]);
+      const { data, error } = await supabase
+        .from("appointments")
+        .insert([formData]);
       if (error) {
         // Logging error message if there's an error
         console.error("Error submitting appointment:", error.message);

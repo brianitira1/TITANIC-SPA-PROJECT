@@ -13,11 +13,11 @@ import "../styles/CustomForm.css";
  */
 const Home: React.FC = () => {
   // Log the rendering of each component
-  console.log('Rendering Home component');
-  console.log('Rendering NavBar component');
-  console.log('Rendering Hero component');
-  console.log('Rendering AboutSection component');
-  console.log('Rendering Footer component');
+  console.log("Rendering Home component");
+  console.log("Rendering NavBar component");
+  console.log("Rendering Hero component");
+  console.log("Rendering AboutSection component");
+  console.log("Rendering Footer component");
 
   // Render the components
   return (

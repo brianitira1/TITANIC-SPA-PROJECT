@@ -26,8 +26,10 @@ interface Appointment {
 
 const AdminDashboard: React.FC = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]); // State for storing appointments
-  const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null); // State for storing selected appointment
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState<boolean>(false); // State for showing delete confirmation modal
+  const [selectedAppointment, setSelectedAppointment] =
+    useState<Appointment | null>(null); // State for storing selected appointment
+  const [showDeleteConfirmation, setShowDeleteConfirmation] =
+    useState<boolean>(false); // State for showing delete confirmation modal
   const [imageLoaded, setImageLoaded] = useState<boolean>(false); // State for tracking image loading status
 
   // Effect to fetch appointments from the database
@@ -35,7 +37,7 @@ const AdminDashboard: React.FC = () => {
     const fetchAppointments = async () => {
       try {
         const { data, error } = await supabase
-        // @ts-ignore
+          // @ts-ignore
           .from<Appointment>("appointments")
           .select(
             "firstname, surname, age, description, date, phoneNumber, email, id, gender, service",
@@ -150,7 +152,8 @@ const AdminDashboard: React.FC = () => {
     <div className="container" id="admin-dashboard">
       {/* @ts-ignore */}
       <NavBar /> {/* Rendering NavBar component */}
-      {!imageLoaded && <div>Loading...</div>} {/* Displaying loading message if image is not loaded */}
+      {!imageLoaded && <div>Loading...</div>}{" "}
+      {/* Displaying loading message if image is not loaded */}
       {imageLoaded && (
         <img
           loading="lazy"

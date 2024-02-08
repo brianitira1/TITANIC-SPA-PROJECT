@@ -12,12 +12,12 @@ import ClientAppointmentPage from "../utils/ClientAppointmentPage";
  */
 const Wellness: React.FC = () => {
   // Log message indicating the Wellness component is rendered
-  console.log('Wellness component rendered');
-  
+  console.log("Wellness component rendered");
+
   return (
     <>
       {/* @ts-ignore */}
-      <NavBar /> 
+      <NavBar />
       <div className="hero-container" id="beauty-container">
         <img
           loading="lazy"

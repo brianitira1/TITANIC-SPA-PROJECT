@@ -14,7 +14,8 @@ const SuccessPage: React.FC = () => {
   // useEffect to check user data and redirect accordingly
   useEffect(() => {
     console.log("user:", user);
-    if (user && user.primaryEmailAddress) { // Check if user and primaryEmailAddress are not null or undefined
+    if (user && user.primaryEmailAddress) {
+      // Check if user and primaryEmailAddress are not null or undefined
       // list of staff emails
       const staffEmails: string[] = ["itirabrian@techie.com"];
       console.log("user.primaryEmailAddress:", user.primaryEmailAddress);
@@ -28,7 +29,6 @@ const SuccessPage: React.FC = () => {
       }
     }
   }, [user, navigate]);
-  
 
   // return redirecting message
   return <div>Redirecting...</div>;
