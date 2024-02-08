@@ -1,28 +1,40 @@
 .navbar {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  ); /* Set background color with opacity */
+  background-color: rgba(255, 255, 255, 0.8); /* Set background color with opacity */
   backdrop-filter: blur(-30px); /* Apply backdrop filter with blur effect */
 }
 
 .custom-nav {
-  margin-left: 800px;
+  margin-left: 1400px;
 }
 
-.navbar-nav{
-  margin-left: -800px;}
-
+.navbar-nav {
+  margin-left: -600px;
+}
 
 @media (max-width: 768px) {
+  .custom-nav {
+    margin-left: 0; /* Adjust the margin for smaller screens */
+  }
   .navbar-nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: -1250px;
- 
+    margin-left: 0; /* Adjust the margin for smaller screens */
+  }
+  .nav-item {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .custom-nav {
+    margin-left: 0; /* Adjust the margin for tablet screens */
+  }
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0; /* Adjust the margin for tablet screens */
   }
   .nav-item {
     margin: 10px 0;
