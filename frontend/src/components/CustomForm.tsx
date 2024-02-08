@@ -6,6 +6,8 @@ interface CustomFormProps {
   onClose: () => void;
 }
 
+
+
 const CustomForm: React.FC<CustomFormProps> = ({ onClose }) => {
   const navigate = useNavigate(); // Initializing useNavigate hook for navigation
   const [name, setName] = useState<string>(""); // State for storing name input
@@ -17,7 +19,7 @@ const CustomForm: React.FC<CustomFormProps> = ({ onClose }) => {
     console.log("Name:", name); // Logging name input
     console.log("Password:", password); // Logging password input
     // Checking if name and password match expected values for authentication
-    if (name === "brian" && password === "nomad") {
+    if (name === "brian" || name === "newton" && password === "nomad" || password === "ninja") {
       navigate("/admin-dashboard"); // Navigating to admin dashboard if authentication succeeds
     } else {
       alert("Invalid credentials"); // Showing alert for invalid credentials
