@@ -5,10 +5,14 @@ import "./index.css";
 
 import { ClerkProvider } from "@clerk/clerk-react";
 
+//import dotenv from "dotenv";
 
-//process.env.PUBLISHABLE_KEY
-const PUBLISHABLE_KEY =
-  "pk_test_ZWFnZXItbWFydGVuLTU1LmNsZXJrLmFjY291bnRzLmRldiQ";
+//dotenv.config();
+
+
+//process.env.VITE_CLERK_PUBLISHABLE_KEY
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+  
 
 if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key, please confirm if you have one");
