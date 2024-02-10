@@ -8,6 +8,12 @@ interface CustomFormProps {
 
 
 
+/**
+ * Function component for a custom form with authentication and navigation.
+ *
+ * @param {CustomFormProps} onClose - function to handle form closure
+ * @return {ReactNode} the custom form component
+ */
 const CustomForm: React.FC<CustomFormProps> = ({ onClose }) => {
   const navigate = useNavigate(); // Initializing useNavigate hook for navigation
   const [name, setName] = useState<string>(""); // State for storing name input

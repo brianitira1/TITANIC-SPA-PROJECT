@@ -6,6 +6,9 @@ import { useClerk } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import CustomForm from "./CustomForm";
 
+/**
+ * React functional component for the Hero section of the web application.
+ */
 const Hero: React.FC = () => {
   const clerk = useClerk(); // Initializing useClerk hook for authentication
   const navigate = useNavigate(); // Initializing useNavigate hook for navigation

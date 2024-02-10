@@ -18,6 +18,11 @@ interface FormData {
   service: string;
 }
 
+/**
+ * React functional component for the client appointment page.
+ *
+ * @return {JSX.Element} The client appointment page component
+ */
 const ClientAppointmentPage: React.FC = () => {
   const navigate = useNavigate(); // Initializing useNavigate hook for navigation
 

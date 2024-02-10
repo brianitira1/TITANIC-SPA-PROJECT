@@ -24,6 +24,11 @@ interface Appointment {
   service: string;
 }
 
+/**
+ * AdminDashboard component for managing appointments and displaying admin dashboard.
+ *
+ * @return {JSX.Element} The JSX element representing the AdminDashboard component
+ */
 const AdminDashboard: React.FC = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]); // State for storing appointments
   const [selectedAppointment, setSelectedAppointment] =

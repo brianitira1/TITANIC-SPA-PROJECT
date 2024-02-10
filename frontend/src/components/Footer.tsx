@@ -3,6 +3,11 @@ import { motion, Variants } from "framer-motion"; // Importing motion from frame
 
 import "../styles/Footer.css"; // Importing CSS styles for the footer
 
+/**
+ * Renders the footer section with animation variants.
+ *
+ * @return {JSX.Element} The rendered footer component
+ */
 const Footer: React.FC = () => {
   // Variants for animation
   const variants: Variants = {

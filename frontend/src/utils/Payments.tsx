@@ -10,6 +10,8 @@ import axios from "axios";
 // @ts-ignore
 import beautybg from "../assets/images/beautybg.jpg";
 
+
+
 /**
  * Functional component for handling payments
  */

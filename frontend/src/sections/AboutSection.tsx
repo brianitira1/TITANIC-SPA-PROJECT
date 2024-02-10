@@ -7,6 +7,11 @@ import AboutImage from "../assets/images/aboutimage.jpg"; // Import the image
 
 import "../styles/About.css";
 
+/**
+ * The AboutSection functional component.
+ *
+ * @return {JSX.Element} The AboutSection component
+ */
 const AboutSection: React.FC = () => {
   const { ref, inView } = useInView();
   const controlsText = useAnimation();
