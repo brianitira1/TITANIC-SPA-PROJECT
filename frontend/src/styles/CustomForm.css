@@ -42,3 +42,15 @@
     width: 80%; /* Adjust width for smaller screens */
   }
 }
+
+
+@media (max-width: 768px) {
+  .custom-form-container {
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; 
+    margin-left: -170px;
+  
+  }
+}
