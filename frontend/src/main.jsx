@@ -11,7 +11,7 @@ import { ClerkProvider } from "@clerk/clerk-react";
 
 
 //process.env.VITE_CLERK_PUBLISHABLE_KEY
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+const PUBLISHABLE_KEY = "pk_test_ZWFnZXItbWFydGVuLTU1LmNsZXJrLmFjY291bnRzLmRldiQ"
   
 
 if (!PUBLISHABLE_KEY) {
