@@ -1,7 +1,8 @@
-import { useState } from "react";
+// NavBar.js
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useClerk } from "@clerk/clerk-react";
-import { MdClose } from "react-icons/md"; // Importing MdClose icon from Material Design Icons
+import { useClerk, SignOutButton, SignedIn } from "@clerk/clerk-react";
+import { MdClose } from "react-icons/md";
 
 const NavBar = ({ scrollToFooter }) => {
   const navigate = useNavigate();
@@ -29,18 +30,12 @@ const NavBar = ({ scrollToFooter }) => {
     scrollToFooter(); // Scrolling to footer section
   };
 
-  const user = clerk.user; // Getting signed-in user
-  const titanicLink = user ? "/" : "#"; // Determining link based on user authentication status
-  console.log("Titanic link:", titanicLink);
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top container">
       <div className="container">
-        {/* Titanic SPA logo link */}
-        <a className="navbar-brand" href={titanicLink}>
+        <a className="navbar-brand" href="/">
           Titanic SPA
         </a>
-        {/* Navbar toggler for mobile view */}
         <button
           className="navbar-toggler"
           type="button"
@@ -52,7 +47,6 @@ const NavBar = ({ scrollToFooter }) => {
             <span className="navbar-toggler-icon"></span>
           )}
         </button>
-        {/* Navbar menu */}
         <div
           className={`collapse navbar-collapse custom-nav ${
             isMenuOpen ? "show" : ""
@@ -60,13 +54,11 @@ const NavBar = ({ scrollToFooter }) => {
         >
           <div className="ml-auto">
             <ul className="navbar-nav">
-              {/* About section link */}
               <li className="nav-item">
                 <a className="nav-link" href="#about">
                   About
                 </a>
               </li>
-              {/* Social Media section link */}
               <li className="nav-item">
                 <a
                   className="nav-link"
@@ -76,7 +68,6 @@ const NavBar = ({ scrollToFooter }) => {
                   Social Media
                 </a>
               </li>
-              {/* Services section link */}
               <li className="nav-item">
                 <a
                   className="nav-link"
@@ -86,6 +77,24 @@ const NavBar = ({ scrollToFooter }) => {
                   Services
                 </a>
               </li>
+              <SignedIn>
+                <li className="nav-item">
+                  <a
+                    href="/user-profile"
+                    className="nav-link"
+                    style={{ cursor: "pointer", color: "green" }}
+                  >
+                    Profile
+                  </a>
+                </li>
+
+                <li className="nav-item">
+                  <SignOutButton
+                    className="nav-link"
+                    style={{ cursor: "pointer", color: "orange" }}
+                  />
+                </li>
+              </SignedIn>
             </ul>
           </div>
         </div>
