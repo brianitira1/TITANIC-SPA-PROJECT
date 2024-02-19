@@ -10,6 +10,7 @@ import Beauty from "./components/Beauty";
 import Wellness from "./components/Wellness";
 import Footer from "./components/Footer";
 import Payments from "./utils/Payments";
+import UserProfilePage from "./userProfilePage";
 
 /**
  * Renders the Router and Routes with specified paths and elements.
@@ -30,6 +31,7 @@ const App: React.FC = () => {
         <Route path="/wellness" element={<Wellness />} />
         <Route path="/footer" element={<Footer />} />
         <Route path="/payments" element={<Payments />} />
+        <Route path="/user-profile" element={<UserProfilePage />} />
       </Routes>
     </Router>
   );
